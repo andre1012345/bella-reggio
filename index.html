@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bella Reggio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Notte sullo Stretto, luce di bergamotto. Telefono: una colonna, prenotazione sempre a portata di pollice. Desktop: video a sinistra, testo a destra. */
+  --strait:#0d2a3f;
+  --strait-2:#143a55;
+  --foam:#eef3f6;
+  --mist:#a9bccb;
+  --bergamot:#e2c84a;
+  --line:#25526f;
+  --display:"DM Serif Display", Georgia, "Times New Roman", serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--strait);color:var(--foam);font-family:var(--body);font-size:17px;line-height:1.55;padding-bottom:92px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--bergamot);outline-offset:3px;border-radius:6px}
+
+/* lingua: si vede solo la lingua scelta */
+html[lang="it"] [data-l="en"], html[lang="en"] [data-l="it"]{display:none !important}
+
+.page{max-width:1080px;margin:0 auto;padding:16px 18px 40px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.brand{font-family:var(--display);font-size:1.3rem}
+.brand small{display:block;font-family:var(--body);font-size:.75rem;color:var(--mist);letter-spacing:.06em;text-transform:uppercase}
+.lang{display:flex;gap:4px;background:var(--strait-2);border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{font:600 .82rem var(--body);color:var(--mist);background:none;border:0;border-radius:999px;padding:7px 13px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--bergamot);color:var(--strait)}
+
+.layout{display:grid;gap:24px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,7.5vw,2.9rem);line-height:1.06;margin:0;text-wrap:balance}
+.hero p{color:var(--mist);margin:10px 0 0;max-width:46ch}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.badge{display:inline-flex;align-items:baseline;gap:7px;padding:7px 13px;border-radius:999px;background:var(--strait-2);border:1px solid var(--line);font-weight:600;font-size:.92rem}
+.badge b{font-family:var(--display);font-weight:400;font-size:1.35rem;color:var(--bergamot);font-variant-numeric:tabular-nums}
+
+.video{border-radius:18px;overflow:hidden;background:#000;aspect-ratio:9/16;width:100%;max-width:400px;max-height:70vh;margin:0 auto;border:1px solid var(--line)}
+.video video{width:100%;height:100%;object-fit:cover;display:block}
+
+.book{display:grid;gap:10px}
+.btn{display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;font-weight:700;padding:15px 18px;border-radius:14px;border:1px solid var(--line);background:var(--strait-2)}
+.btn.primary{background:var(--bergamot);color:var(--strait);border-color:var(--bergamot)}
+.btn small{font-weight:600;opacity:.85;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.facts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.facts li{display:grid;gap:2px;align-content:start;background:var(--strait-2);border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+.facts strong{font-size:1rem;line-height:1.3}
+.facts span{color:var(--mist);font-size:.88rem;line-height:1.35}
+
+h2{font-family:var(--display);font-weight:400;font-size:1.5rem;margin:0 0 12px}
+.quotes{display:grid;gap:10px}
+blockquote{margin:0;padding:14px 16px;border-left:3px solid var(--bergamot);background:var(--strait-2);border-radius:0 12px 12px 0}
+blockquote p{margin:0}
+blockquote cite{display:block;margin-top:6px;font-style:normal;color:var(--mist);font-size:.85rem}
+
+.where p{margin:0 0 8px;color:var(--mist)}
+.where .addr{color:var(--foam);font-weight:600}
+.where a{color:var(--bergamot);font-weight:600}
+footer{color:var(--mist);font-size:.82rem;border-top:1px solid var(--line);padding-top:16px;margin-top:8px}
+
+/* barra di prenotazione fissa sul telefono */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(13,42,63,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
+.bar a{text-align:center;text-decoration:none;font-weight:700;font-size:.95rem;padding:13px 8px;border-radius:12px;border:1px solid var(--line);background:var(--strait-2)}
+.bar a.primary{background:var(--bergamot);color:var(--strait);border-color:var(--bergamot)}
+
+@media (min-width:860px){
+  body{padding-bottom:0}
+  .bar{display:none}
+  .layout{grid-template-columns:400px 1fr;column-gap:48px;align-items:start}
+  .video{position:sticky;top:20px;grid-row:span 6;max-height:none}
+  .hero h1{font-size:3.1rem}
+  .facts{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:370px){.facts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <span class="brand">Bella Reggio<small>Reggio Calabria</small></span>
+    <div class="lang" role="group" aria-label="Lingua / Language">
+      <button type="button" id="btn-it" aria-pressed="true">IT</button>
+      <button type="button" id="btn-en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <div class="video">
+      <video src="bella-reggio.mp4" poster="poster.jpg" controls playsinline muted preload="metadata" aria-label="Video tour"></video>
+    </div>
+
+    <section class="hero">
+      <h1>
+        <span data-l="it">Dopo un lungo viaggio, tutti cerchiamo comfort.</span>
+        <span data-l="en">After a long journey, we all want comfort.</span>
+      </h1>
+      <p>
+        <span data-l="it">Ampio appartamento al piano terra, ideale prima di un volo all'alba o dopo un arrivo in tarda serata.</span>
+        <span data-l="en">A spacious ground-floor apartment, ideal before an early flight or after a late arrival.</span>
+      </p>
+      <div class="badges">
+        <span class="badge"><b>5–10</b><span data-l="it">min a piedi dall'aeroporto</span><span data-l="en">min walk to the airport</span></span>
+        <span class="badge"><span data-l="it">Check-in a qualsiasi ora</span><span data-l="en">Check-in at any hour</span></span>
+      </div>
+    </section>
+
+    <section class="book" aria-label="Book">
+      <a class="btn primary" href="https://www.airbnb.it/rooms/13824398">
+        <span data-l="it">Prenota su Airbnb</span><span data-l="en">Book on Airbnb</span>
+        <small>★ 4,65 · 130</small>
+      </a>
+      <a class="btn" href="https://www.booking.com/hotel/it/bella-reggio.it.html">
+        <span data-l="it">Prenota su Booking.com</span><span data-l="en">Book on Booking.com</span>
+        <small>8,5 / 10 · 127</small>
+      </a>
+    </section>
+
+    <ul class="facts">
+      <li><strong data-l="it">Check-in autonomo</strong><strong data-l="en">Self check-in</strong>
+        <span data-l="it">cassetta chiavi, qualsiasi ora</span><span data-l="en">key box, any hour</span></li>
+      <li><strong data-l="it">3 camere</strong><strong data-l="en">3 bedrooms</strong>
+        <span data-l="it">fino a 7 ospiti · 120 m²</span><span data-l="en">sleeps 7 · 120 m²</span></li>
+      <li><strong data-l="it">Patio privato</strong><strong data-l="en">Private patio</strong>
+        <span data-l="it">tavolo e sedie all'aperto</span><span data-l="en">outdoor table and chairs</span></li>
+      <li><strong data-l="it">Cucina completa</strong><strong data-l="en">Full kitchen</strong>
+        <span data-l="it">caffè, bollitore, microonde</span><span data-l="en">coffee, kettle, microwave</span></li>
+      <li><strong data-l="it">Climatizzatore</strong><strong data-l="en">Air conditioning</strong>
+        <span data-l="it">più wifi e lavatrice</span><span data-l="en">plus wifi and washer</span></li>
+      <li><strong data-l="it">Parcheggio</strong><strong data-l="en">Parking</strong>
+        <span data-l="it">gratuito in strada</span><span data-l="en">free on the street</span></li>
+    </ul>
+
+    <section>
+      <h2><span data-l="it">Dicono gli ospiti</span><span data-l="en">What guests say</span></h2>
+      <div class="quotes">
+        <blockquote>
+          <p data-l="it">«Perfetto per un pernottamento economico dopo un arrivo tardivo a Reggio.»</p>
+          <p data-l="en">“Perfect for an affordable overnight stay after a late arrival in Reggio.”</p>
+          <cite>Booking.com</cite>
+        </blockquote>
+        <blockquote>
+          <p data-l="it">«Check-in facile con cassettina all'esterno dell'edificio.»</p>
+          <p data-l="en">“Easy check-in with a little key box outside the building.”</p>
+          <cite>Airbnb · <span data-l="it">agosto 2026</span><span data-l="en">August 2026</span></cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="where">
+      <h2><span data-l="it">Dove siamo</span><span data-l="en">Where we are</span></h2>
+      <p class="addr">Traversa 2ª Scagliola 36, 89131 Reggio Calabria</p>
+      <p>
+        <span data-l="it">Quartiere Ravagnese. Centro storico, Lungomare Falcomatà e Museo dei Bronzi di Riace a circa 4,6 km.</span>
+        <span data-l="en">Ravagnese district. Old town, Lungomare Falcomatà seafront and the Riace Bronzes museum about 4.6 km away.</span>
+      </p>
+      <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Traversa+2%C2%AA+Scagliola+36+Reggio+Calabria">
+        <span data-l="it">Apri in Google Maps →</span><span data-l="en">Open in Google Maps →</span></a></p>
+      <footer>
+        <span data-l="it">La tua host è Anna, Superhost su Airbnb da oltre 10 anni.</span>
+        <span data-l="en">Your host is Anna, an Airbnb Superhost for over 10 years.</span>
+      </footer>
+    </section>
+  </div>
+</div>
+
+<nav class="bar" aria-label="Book">
+  <a class="primary" href="https://www.airbnb.it/rooms/13824398">Airbnb</a>
+  <a href="https://www.booking.com/hotel/it/bella-reggio.it.html">Booking.com</a>
+</nav>
+
+<script>
+(function(){
+  var root=document.documentElement, it=document.getElementById('btn-it'), en=document.getElementById('btn-en');
+  function set(l){root.lang=l; it.setAttribute('aria-pressed',String(l==='it')); en.setAttribute('aria-pressed',String(l==='en'));
+    try{localStorage.setItem('br-lang',l)}catch(e){}}
+  function fromHash(){var h=(location.hash||'').replace('#',''); return (h==='en'||h==='it')?h:null;}
+  var saved=null; try{saved=localStorage.getItem('br-lang')}catch(e){}
+  set(fromHash() || saved || ((navigator.language||'it').toLowerCase().indexOf('it')===0 ? 'it' : 'en'));
+  it.addEventListener('click',function(){set('it'); try{history.replaceState(null,'','#it')}catch(e){}});
+  en.addEventListener('click',function(){set('en'); try{history.replaceState(null,'','#en')}catch(e){}});
+  window.addEventListener('hashchange',function(){var h=fromHash(); if(h) set(h);});
+})();
+</script>
+</body>
+</html>
