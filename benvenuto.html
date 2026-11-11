@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Benvenuti · Bella Reggio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--strait:#0d2a3f;--strait-2:#143a55;--foam:#eef3f6;--mist:#a9bccb;--bergamot:#e2c84a;--line:#25526f;
+  --display:"DM Serif Display",Georgia,serif;--body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--strait);color:var(--foam);font-family:var(--body);font-size:17px;line-height:1.55}
+a{color:var(--bergamot)}
+:focus-visible{outline:3px solid var(--bergamot);outline-offset:3px;border-radius:6px}
+html[lang="it"] [data-l="en"],html[lang="en"] [data-l="it"]{display:none !important}
+.page{max-width:640px;margin:0 auto;padding:16px 18px 48px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}
+.brand{font-family:var(--display);font-size:1.3rem}
+.brand small{display:block;font-family:var(--body);font-size:.75rem;color:var(--mist);letter-spacing:.06em;text-transform:uppercase}
+.lang{display:flex;gap:4px;background:var(--strait-2);border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{font:600 .82rem var(--body);color:var(--mist);background:none;border:0;border-radius:999px;padding:7px 13px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--bergamot);color:var(--strait)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(1.9rem,7vw,2.5rem);line-height:1.08;margin:0 0 10px}
+h2{font-family:var(--display);font-weight:400;font-size:1.45rem;margin:32px 0 8px}
+.lead{color:var(--mist);margin:0}
+form{display:grid;gap:14px;margin-top:14px}
+label{display:grid;gap:6px;font-weight:600;font-size:.95rem}
+label small{font-weight:400;color:var(--mist)}
+input,select,textarea{font:inherit;color:var(--foam);background:var(--strait-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+textarea{min-height:120px;resize:vertical}
+.row{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.check input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:var(--bergamot)}
+button.send{font:700 1rem var(--body);color:var(--strait);background:var(--bergamot);border:0;border-radius:14px;padding:15px 18px;cursor:pointer}
+.note{color:var(--mist);font-size:.82rem;margin:0}
+.hp{position:absolute;left:-9999px}
+@media (max-width:420px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <span class="brand">Bella Reggio<small data-l="it">Benvenuti</small><small data-l="en">Welcome</small></span>
+    <div class="lang" role="group" aria-label="Lingua / Language">
+      <button type="button" id="btn-it" aria-pressed="true">IT</button>
+      <button type="button" id="btn-en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <h1><span data-l="it">Benvenuti a casa di Anna</span><span data-l="en">Welcome to Anna's home</span></h1>
+  <p class="lead">
+    <span data-l="it">Per orari dei bus, aliscafi per Messina e cose da vedere, apri la <a href="/#zona">guida alla zona</a>.</span>
+    <span data-l="en">For bus times, hydrofoils to Messina and things to see, open the <a href="/#zona">area guide</a>.</span>
+  </p>
+
+  <!-- QUI le informazioni per il soggiorno, quando Anna le fornisce (orari, rifiuti, regole, nome rete wifi).
+       MAI codice della cassetta, password wifi o numeri di telefono: questa pagina è raggiungibile da chiunque abbia il link. -->
+
+  <h2><span data-l="it">Lascia un consiglio ai prossimi ospiti</span><span data-l="en">Leave a tip for the next guests</span></h2>
+  <p class="lead">
+    <span data-l="it">Un bar per la colazione, una spiaggia, come arrivare senza stress: tutto quello che avresti voluto sapere prima. Anna legge ogni consiglio prima di pubblicarlo.</span>
+    <span data-l="en">A breakfast spot, a beach, a stress-free way to get here: whatever you wish you'd known beforehand. Anna reads every tip before publishing it.</span>
+  </p>
+
+  <form id="f-consigli" name="consigli" method="POST" action="/grazie.html">
+    <input type="hidden" name="lingua" id="f-lingua" value="it">
+    <p class="hp"><label>Non compilare / Don't fill: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+    <label><span data-l="it">Il tuo consiglio</span><span data-l="en">Your tip</span>
+      <textarea name="consiglio" required maxlength="400"></textarea>
+      <small><span data-l="it">Massimo 400 caratteri.</span><span data-l="en">Up to 400 characters.</span></small>
+    </label>
+
+    <label><span data-l="it">Di cosa parla?</span><span data-l="en">What is it about?</span>
+      <select name="tema">
+        <option value="mangiare">Mangiare e bere / Food &amp; drink</option>
+        <option value="muoversi">Come muoversi / Getting around</option>
+        <option value="da-vedere">Da vedere / Things to see</option>
+        <option value="mare">Mare e spiagge / Sea &amp; beaches</option>
+        <option value="casa">La casa / The house</option>
+        <option value="altro">Altro / Other</option>
+      </select>
+    </label>
+
+    <div class="row">
+      <label><span data-l="it">Nome</span><span data-l="en">First name</span>
+        <input name="nome" autocomplete="given-name" maxlength="40">
+      </label>
+      <label><span data-l="it">Da dove vieni</span><span data-l="en">Where you're from</span>
+        <input name="citta" maxlength="60" placeholder="Torino / Berlin…">
+      </label>
+    </div>
+
+    <label class="check">
+      <input type="checkbox" name="consenso_pubblicazione" value="si">
+      <span><span data-l="it">Acconsento a pubblicare il consiglio sul sito con nome, città e mese del soggiorno.</span><span data-l="en">I agree to have my tip published on the website with my first name, city and month of stay.</span></span>
+    </label>
+
+    <p class="note" id="f-err" role="alert" hidden><span data-l="it">Invio non riuscito: controlla la connessione e riprova.</span><span data-l="en">Sending failed: check your connection and try again.</span></p>
+    <button class="send" type="submit"><span data-l="it">Invia il consiglio</span><span data-l="en">Send my tip</span></button>
+    <p class="note">
+      <span data-l="it">Non chiediamo email né telefono. Senza consenso il consiglio resta solo ad Anna. Per farlo rimuovere basta scriverle tramite Airbnb o Booking.</span>
+      <span data-l="en">We don't ask for email or phone. Without consent your tip stays with Anna only. To have it removed, just message her via Airbnb or Booking.</span>
+    </p>
+  </form>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement, it=document.getElementById('btn-it'), en=document.getElementById('btn-en');
+  function set(l){root.lang=l; it.setAttribute('aria-pressed',String(l==='it')); en.setAttribute('aria-pressed',String(l==='en'));
+    try{localStorage.setItem('br-lang',l)}catch(e){}}
+  function fromHash(){var h=(location.hash||'').replace('#',''); return (h==='en'||h==='it')?h:null;}
+  var saved=null; try{saved=localStorage.getItem('br-lang')}catch(e){}
+  set(fromHash() || saved || ((navigator.language||'it').toLowerCase().indexOf('it')===0 ? 'it' : 'en'));
+  it.addEventListener('click',function(){set('it')});
+  en.addEventListener('click',function(){set('en')});
+})();
+</script>
+
+<script>
+(function(){
+  var ENDPOINT='https://script.google.com/macros/s/AKfycbxWcEQ5eF6_843dAVen6mXXAgchis4HXTHRUVMbFhVmGPcTRYEBdzan7QYl61JKemKB/exec';
+  var f=document.getElementById('f-consigli'); if(!f) return;
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var btn=f.querySelector('button.send'); btn.disabled=true;
+    document.getElementById('f-lingua').value=document.documentElement.lang||'it';
+    fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:new URLSearchParams(new FormData(f))})
+      .then(function(){location.href='/grazie.html';})
+      .catch(function(){btn.disabled=false;document.getElementById('f-err').hidden=false;});
+  });
+})();
+</script>
+</body>
+</html>
