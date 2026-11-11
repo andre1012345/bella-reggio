@@ -156,3 +156,21 @@ body.has-bar{padding-bottom:88px}
 /* rimando all'altra casa */
 .sister{margin-top:14px !important;padding:12px 14px;border-radius:14px;background:var(--sun-soft);color:var(--ink) !important;font-size:.92rem}
 .sister a{font-weight:700}
+
+/* home con le case */
+.home-hero{margin-top:8px}
+.home-hero h1{max-width:18ch}
+.homes{display:grid;gap:16px;grid-template-columns:1fr;margin-top:32px}
+.home-card{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:12px;box-shadow:var(--shadow);transition:transform .15s ease}
+.home-card:hover{transform:translateY(-2px)}
+.home-card img{width:120px;height:170px;object-fit:cover;border-radius:14px;display:block}
+.home-card h2{margin:0 0 4px}
+.home-card p{margin:0 0 6px;color:var(--muted);font-size:.93rem}
+.home-card .rates{color:var(--ink);font-weight:600;font-size:.88rem}
+.go-link{font-weight:700;color:var(--sea)}
+@media (min-width:860px){
+  .homes{grid-template-columns:1fr 1fr}
+  .home-card{grid-template-columns:1fr;padding:0;overflow:hidden;align-items:stretch}
+  .home-card img{width:100%;height:340px;border-radius:0}
+  .home-body{padding:16px 20px 20px}
+}

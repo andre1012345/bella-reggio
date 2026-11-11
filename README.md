@@ -2,7 +2,7 @@
 
 **A fast, bilingual showcase website for small holiday-rental hosts — built to turn platform guests into direct, informed bookings, at zero hosting cost.**
 
-Live demo: **[bella-reggio.pages.dev](https://bella-reggio.pages.dev)** · second property: **[/vista-monte](https://bella-reggio.pages.dev/vista-monte)**
+Live demo: **[reggio-airport-stays.pages.dev](https://reggio-airport-stays.pages.dev)** · properties: **[/bella-reggio](https://reggio-airport-stays.pages.dev/bella-reggio)** · **[/vista-monte](https://reggio-airport-stays.pages.dev/vista-monte)**
 
 Built for two family-run apartments next to Reggio Calabria airport (Italy), and designed to be reused for any host with one to a handful of properties.
 
@@ -32,7 +32,8 @@ Built for two family-run apartments next to Reggio Calabria airport (Italy), and
 - **Privacy by design.** Tips collect no email or phone number, publication requires explicit consent, and the welcome page never contains door codes or Wi-Fi passwords.
 
 ```
-index.html          property 1 (home)
+index.html          home: both properties
+bella-reggio.html   property 1
 vista-monte.html    property 2
 consigli.html       guest tips blog + submission form
 benvenuto.html      private welcome page (noindex)
@@ -45,7 +46,7 @@ sitemap.xml · robots.txt
 
 1. Copy `vista-monte.html` to `your-property.html`.
 2. Update the text, the platform links and ratings, the video and poster, and the JSON-LD block.
-3. Add the page to `sitemap.xml` and push. Cloudflare publishes it in under a minute.
+3. Add a card for it in `index.html`, add the page to `sitemap.xml`, and push. Cloudflare publishes it in under a minute.
 
 Brand colours and fonts live in the `:root` variables at the top of `assets/site.css`.
 
