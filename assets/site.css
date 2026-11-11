@@ -152,3 +152,7 @@ body.has-bar{padding-bottom:88px}
 @media (max-width:420px){.row{grid-template-columns:1fr}}
 @media (max-width:370px){.facts{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.btn{transition:none}}
+
+/* rimando all'altra casa */
+.sister{margin-top:14px !important;padding:12px 14px;border-radius:14px;background:var(--sun-soft);color:var(--ink) !important;font-size:.92rem}
+.sister a{font-weight:700}
