@@ -1,0 +1,154 @@
+/* Bella Reggio · foglio di stile condiviso da tutte le pagine.
+   Tema chiaro: intonaco caldo, inchiostro blu Stretto, accento mare, tocco di bergamotto.
+   Per una nuova casa/pagina basta collegare questo file e usare le stesse classi. */
+
+:root{
+  --bg:#fbf8f3;          /* intonaco */
+  --surface:#ffffff;
+  --sunk:#f3eee6;
+  --ink:#15293b;         /* blu Stretto */
+  --muted:#5d6c78;
+  --sea:#1c5a85;         /* accento */
+  --sea-ink:#ffffff;
+  --sea-soft:#e7f0f6;
+  --sun:#e9c46a;         /* bergamotto */
+  --sun-soft:#fbf1d6;
+  --line:#e7e0d5;
+  --radius:16px;
+  --shadow:0 1px 2px rgba(21,41,59,.05),0 8px 24px rgba(21,41,59,.06);
+  --display:"DM Serif Display",Georgia,"Times New Roman",serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--sea)}
+img,video,iframe{max-width:100%}
+:focus-visible{outline:3px solid var(--sea);outline-offset:3px;border-radius:6px}
+html[lang="it"] [data-l="en"],html[lang="en"] [data-l="it"]{display:none !important}
+
+/* struttura */
+.page{max-width:1080px;margin:0 auto;padding:18px 20px 56px}
+.page.narrow{max-width:760px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:28px}
+.brand{font-family:var(--display);font-size:1.35rem;color:var(--ink);text-decoration:none;line-height:1.1}
+.brand small{display:block;font-family:var(--body);font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+.lang{display:flex;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{font:600 .82rem var(--body);color:var(--muted);background:none;border:0;border-radius:999px;padding:7px 13px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.1rem,7.5vw,3.2rem);line-height:1.05;margin:0 0 12px;letter-spacing:-.01em;text-wrap:balance}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,4.5vw,1.9rem);line-height:1.15;margin:0 0 10px}
+h3{font-family:var(--display);font-weight:400;font-size:1.2rem;margin:0 0 6px}
+.lead,.intro{color:var(--muted);margin:0 0 18px;max-width:60ch}
+section{margin-top:56px}
+.layout>section:first-of-type{margin-top:0}
+
+/* home: video + testo */
+.layout{display:grid;gap:28px}
+.layout section{margin-top:0}
+.hero h1{margin-bottom:12px}
+.hero p{color:var(--muted);margin:0;max-width:46ch}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.badge{display:inline-flex;align-items:baseline;gap:7px;padding:7px 14px;border-radius:999px;background:var(--sea-soft);color:var(--sea);font-weight:600;font-size:.92rem}
+.badge b{font-family:var(--display);font-weight:400;font-size:1.3rem;font-variant-numeric:tabular-nums}
+.video{border-radius:20px;overflow:hidden;background:#000;aspect-ratio:9/16;width:100%;max-width:400px;max-height:72vh;margin:0 auto;box-shadow:var(--shadow)}
+.video video{width:100%;height:100%;object-fit:cover;display:block}
+
+/* pulsanti */
+.book{display:grid;gap:10px}
+.btn{display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;font-weight:700;color:var(--ink);padding:15px 18px;border-radius:14px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--sea);color:var(--sea-ink);border-color:var(--sea)}
+.btn small{font-weight:600;opacity:.8;font-variant-numeric:tabular-nums;white-space:nowrap}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.btn-row .btn{display:inline-flex}
+
+/* schede e griglie */
+.facts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.facts li,.card,.tip,.post{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.facts li{display:grid;gap:2px;align-content:start;padding:14px 15px}
+.facts strong{font-size:1rem;line-height:1.3}
+.facts span{color:var(--muted);font-size:.88rem;line-height:1.35}
+
+.quotes{display:grid;gap:10px}
+blockquote{margin:0;padding:16px 18px;background:var(--sun-soft);border-radius:var(--radius)}
+blockquote p{margin:0;font-family:var(--display);font-size:1.15rem;line-height:1.4}
+blockquote cite{display:block;margin-top:8px;font-style:normal;color:var(--muted);font-size:.85rem}
+
+.where p{margin:0 0 8px;color:var(--muted)}
+.where .addr{color:var(--ink);font-weight:600}
+.where a{font-weight:700}
+
+/* la zona */
+.map{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--sea-soft) center/cover;margin-bottom:14px}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map .load{position:absolute;inset:0;display:grid;place-items:center;gap:8px;align-content:center;border:0;background:linear-gradient(135deg,#e7f0f6,#f6efe2);color:var(--sea);font:700 1rem var(--body);cursor:pointer}
+.map .load small{font-weight:500;color:var(--muted);font-size:.8rem}
+.go{display:grid;gap:12px;grid-template-columns:1fr}
+.card{padding:16px 18px}
+.card p{margin:0 0 8px;color:var(--muted);font-size:.95rem}
+.card p b{color:var(--ink);font-weight:600}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.links a{font-size:.85rem;font-weight:700;text-decoration:none;padding:7px 12px;border-radius:999px;background:var(--sea-soft);color:var(--sea)}
+.note{color:var(--muted);font-size:.82rem;margin:12px 0 0}
+
+/* consigli */
+.tips{display:grid;gap:12px;grid-template-columns:1fr}
+.tip{margin:0;padding:16px 18px;display:grid;gap:8px;align-content:start}
+.tip p,.post p{margin:0}
+.tip cite{font-style:normal;color:var(--muted);font-size:.82rem}
+.k{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--sea)}
+.guest,.tip.new{border-left:4px solid var(--sun)}
+.who{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.85rem;font-style:normal}
+.av{width:30px;height:30px;border-radius:50%;background:var(--sun);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:.85rem;flex:none}
+
+/* blog */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}
+.chip{font:600 .85rem var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.feed{display:grid;gap:12px}
+.post{padding:18px 20px;display:grid;gap:10px}
+.post[hidden]{display:none}
+.post p{font-size:1.05rem}
+.empty{color:var(--muted);font-size:.9rem}
+
+/* moduli */
+form{display:grid;gap:14px;margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--shadow)}
+label{display:grid;gap:6px;font-weight:600;font-size:.95rem}
+label small{font-weight:400;color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sea);box-shadow:0 0 0 3px var(--sea-soft)}
+textarea{min-height:120px;resize:vertical}
+.row{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.check input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:var(--sea)}
+button.send{font:700 1rem var(--body);color:var(--sea-ink);background:var(--sea);border:0;border-radius:14px;padding:15px 18px;cursor:pointer}
+button.send:disabled{opacity:.6}
+.ok{background:var(--sun-soft);border-radius:20px;padding:20px;margin-top:14px}
+.ok strong{font-family:var(--display);font-weight:400;font-size:1.4rem;display:block}
+.hp{position:absolute;left:-9999px}
+.back{display:inline-block;margin-top:40px;font-weight:700;text-decoration:none}
+
+footer.site{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:18px;margin-top:48px}
+
+/* barra di prenotazione fissa sul telefono */
+body.has-bar{padding-bottom:88px}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(251,248,243,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.bar a{text-align:center;text-decoration:none;font-weight:700;font-size:.95rem;padding:13px 8px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.bar a.primary{background:var(--sea);color:#fff;border-color:var(--sea)}
+
+@media (min-width:860px){
+  body.has-bar{padding-bottom:0}
+  .bar{display:none}
+  .layout{grid-template-columns:400px 1fr;column-gap:56px;align-items:start}
+  .video{position:sticky;top:20px;grid-row:span 5;max-height:none}
+  .facts{grid-template-columns:repeat(3,1fr)}
+  .go{grid-template-columns:1fr 1fr}
+  .tips{grid-template-columns:repeat(3,1fr)}
+  .map{aspect-ratio:auto;height:380px}
+}
+@media (max-width:420px){.row{grid-template-columns:1fr}}
+@media (max-width:370px){.facts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
